@@ -21,16 +21,8 @@ public class Client implements Runnable{
             sc = new Scanner(System.in);
             System.out.println("Em qual servidor deseja conectar? (1/2/3)");
             int serverIndex = sc.nextInt();
-            if(serverIndex == 1){
-                client = new Socket("127.0.0.1", 9999);
-            }
-            else if(serverIndex == 2){
-                client = new Socket("127.0.0.1", 9998);
-            }
-            else if(serverIndex == 3){
-                client = new Socket("127.0.0.1", 9997);
-            }
-
+            int serverFixed = 10000;
+            client = new Socket("127.0.0.1", serverFixed - serverIndex);
             in = new BufferedReader(new InputStreamReader(client.getInputStream()));
             out = new PrintWriter(client.getOutputStream(), true);
 
